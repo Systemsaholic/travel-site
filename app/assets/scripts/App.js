@@ -5,13 +5,26 @@ import StickyHeader from "./modules/StickyHeader"
 
 new RevealOnScroll(document.querySelectorAll(".feature-item"), 75)
 new RevealOnScroll(document.querySelectorAll(".testimonial"), 60)
+mobileMenu = new MobileMenu()
+stickeyHeader = new StickyHeader()
+let modal
 
-const mobileMenu = new MobileMenu()
-const stickeyHeader = new StickyHeader()
+document.querySelectorAll(".open-modal").forEach(el => {
+  el.addEventListener("click", async e => {
+    e.preventDefault()
+    if (typeof modal == "undefined") {
+      import(/* webpackChunkName: "modal" */ "./modules/Modal")
+        .then(x => {
+          modal = new x.default()
+          setTimeout(() => modal.openTheModal(), 20)
+        })
+        .catch(() => console.log("There was a problem"))
+    } else {
+      modal.openTheModal()
+    }
+  })
+})
 
 if (module.hot) {
   module.hot.accept()
 }
-
-
-

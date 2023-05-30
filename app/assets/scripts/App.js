@@ -1,12 +1,13 @@
 import "../styles/styles.css"
+import "lazysizes"
 import MobileMenu from "./modules/MobileMenu"
 import RevealOnScroll from "./modules/RevealOnScroll"
 import StickyHeader from "./modules/StickyHeader"
 
 new RevealOnScroll(document.querySelectorAll(".feature-item"), 75)
 new RevealOnScroll(document.querySelectorAll(".testimonial"), 60)
-mobileMenu = new MobileMenu()
-stickeyHeader = new StickyHeader()
+new MobileMenu()
+new StickyHeader()
 let modal
 
 document.querySelectorAll(".open-modal").forEach(el => {

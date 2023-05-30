@@ -7,7 +7,7 @@ exports.handler = (event, context, callback) => {
   let body
 
   if (event.body) {
-    body = JSON.parse(even.body)
+    body = JSON.parse(event.body)
   } else {
     body = {}
   }
